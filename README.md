@@ -24,3 +24,13 @@ Python 3.11+ and no third party dependencies.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Quick example
+
+```python
+from billing.invoice import build_invoice
+from billing.exporter import invoices_to_csv
+
+inv = build_invoice("2024-0101", "ops@example.com", "ES", [("Pro plan", 4900, 1)])
+print(invoices_to_csv([inv]))
+```
