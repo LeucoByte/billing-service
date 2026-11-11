@@ -1,11 +1,12 @@
 """Proration for plan changes in the middle of a billing period."""
+import math
 
 
 def daily_rate_cents(amount_cents: int, days_in_period: int) -> int:
     """Cost of one day of a period, in cents."""
     if days_in_period <= 0:
         raise ValueError("days_in_period must be positive")
-    return round(amount_cents / days_in_period)
+    return math.ceil(amount_cents / days_in_period)
 
 
 def prorate_cents(amount_cents: int, days_used: int, days_in_period: int) -> int:
