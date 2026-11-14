@@ -13,3 +13,7 @@ class InvoiceTests(unittest.TestCase):
     def test_empty(self):
         with self.assertRaises(ValueError):
             build_invoice("2024-0003", "c@example.com", "ES", [])
+
+    def test_email_is_trimmed(self):
+        inv = build_invoice("2024-0004", "  d@example.com ", "ES", [("Pro plan", 1000, 1)])
+        assert inv.customer_email == "d@example.com"
