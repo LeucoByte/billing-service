@@ -1,13 +1,11 @@
 """Volume discounts for invoice line items."""
+from .config import VOLUME_TIERS
 
 
 def volume_discount_percent(quantity: int) -> int:
-    if quantity >= 100:
-        return 15
-    if quantity >= 50:
-        return 10
-    if quantity >= 10:
-        return 5
+    for min_qty, percent in VOLUME_TIERS:
+        if quantity >= min_qty:
+            return percent
     return 0
 
 
