@@ -4,7 +4,7 @@ import io
 
 from .money import format_cents
 
-HEADER = ["number", "customer_email", "country", "net", "tax", "total", "status"]
+HEADER = ["number", "customer_email", "country", "net", "tax", "total", "status", "currency"]
 
 
 def invoices_to_csv(invoices) -> str:
@@ -14,5 +14,5 @@ def invoices_to_csv(invoices) -> str:
     for inv in invoices:
         w.writerow([inv.number, inv.customer_email, inv.country,
                     format_cents(inv.net_cents, ""), format_cents(inv.tax_cents, ""),
-                    format_cents(inv.total_cents, ""), inv.status])
+                    format_cents(inv.total_cents, ""), inv.status, inv.currency])
     return buf.getvalue()
