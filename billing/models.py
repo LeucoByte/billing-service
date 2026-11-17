@@ -22,6 +22,7 @@ class Invoice:
     items: List[LineItem] = field(default_factory=list)
     tax_cents: int = 0
     status: str = "draft"   # draft | open | paid | void
+    currency: str = "EUR"
 
     @property
     def net_cents(self) -> int:
